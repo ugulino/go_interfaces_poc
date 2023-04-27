@@ -12,12 +12,12 @@ type Vendedor struct {
 	Venda    venda.Venda
 }
 
-func (v *Vendedor) CalculaComissao() float64 {
+func (v *Vendedor) CalculaComissao() (float64, error) {
 	var venda = v.Venda
 	if venda.Status == "Faturada" {
 		v.Comissao.Valor =
 			(v.Comissao.Percents / 100) * venda.Valor
-		return v.Comissao.Valor
+		return v.Comissao.Valor, nil
 	}
-	return 0.00
+	return 0.00, nil
 }
