@@ -2,6 +2,11 @@ package main
 
 import (
 	"fmt"
+
+	"varejo.org.br/domain/comissao"
+	"varejo.org.br/domain/funcionario"
+	"varejo.org.br/domain/venda"
+
 )
 
 func main() {
@@ -38,6 +43,8 @@ func main() {
 		Venda: venda,
 	}
 
-	fmt.Println("Comissão gerente:", venda.Execute(&john))
-	fmt.Println("Comissão vendedor:", venda.Execute(&mary))
+	var comissao_gerente, _ = venda.Execute(&john)
+	var comissao_vendedor, _ = venda.Execute(&mary)
+	fmt.Println("Comissão gerente:", comissao_gerente)
+	fmt.Println("Comissão vendedor:", comissao_vendedor)
 }

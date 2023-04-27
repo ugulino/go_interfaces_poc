@@ -25,7 +25,7 @@ func Test_cacula_comissao_venda_(t *testing.T) {
 	}
 
 	var valor_comissao_expected = 0.00
-	var valor_comissao_calculated = venda.Execute(&john)
+	var valor_comissao_calculated, _ = venda.Execute(&john)
 
 	if valor_comissao_expected != valor_comissao_calculated {
 		t.Error("Expected valor_comissao_calculated to be 0.00")
@@ -49,7 +49,7 @@ func Test_cacula_comissao_venda_cancelada(t *testing.T) {
 	}
 
 	var valor_comissao_expected = 15.00
-	var valor_comissao_calculated = venda.Execute(&john)
+	var valor_comissao_calculated, _ = venda.Execute(&john)
 
 	if valor_comissao_expected != valor_comissao_calculated {
 		t.Error("Expected valor_comissao_calculated to be 15.00")
