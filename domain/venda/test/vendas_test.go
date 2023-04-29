@@ -21,7 +21,7 @@ func TestVendaUserCaseSuite(t *testing.T) {
 	suite.Run(t, new(VendaUserCaseSuite))
 }
 
-func (s VendaUserCaseSuite) TestVendaUserCaseSuiteDown() {
+func (s *VendaUserCaseSuite) TestVendaUserCaseSuiteDown() {
 	defer s.ctrl.Finish()
 }
 
@@ -38,12 +38,12 @@ func (s *VendaUserCaseSuite) SetupTest() {
 	}
 }
 
-func (s VendaUserCaseSuite) TestVendaUserCaseSuiteSuccess() {
+func (s *VendaUserCaseSuite) TestVendaUserCaseSuiteSuccess() {
 	var comissao, _ = s.Venda.Execute(s.CalculosVenda)
 	s.Assert().True(comissao == 100.00)
 }
 
-func (s VendaUserCaseSuite) TestVendaUserCaseSuiteCancelada() {
+func (s *VendaUserCaseSuite) TestVendaUserCaseSuiteCancelada() {
 	s.CalculosVenda = mock.NewMockCalculosVenda(s.ctrl)
 
 	s.Venda.Status = "Cancelada"
